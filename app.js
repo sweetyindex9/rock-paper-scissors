@@ -1,7 +1,7 @@
 function game () {
     let pScore = 0;
     let cScore = 0;
-  
+    let cnt=0;
     
     function startGame () {
       const playBtn = document.querySelector(".intro button");
@@ -48,24 +48,28 @@ function game () {
     };
   
     function playRound(playerSelection, computerSelection) {
-      
+     
       const winner = document.querySelector(".winner");
+      const looser = document.querySelector(".looser");
      
       
       if (playerSelection === computerSelection) {
         winner.textContent = "It is a tie";
+        looser.textContent = "It is a tie";
         return;
       }
       
       if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
           winner.textContent = "Player Wins";
+          looser.textContent = "Computer lose ! rock beats scissors";
           
-          pScore++;
-          updateScore();
+         pScore++;
+         updateScore();
           return;
         } else {
           winner.textContent = "Computer Wins";
+          looser.textContent = "Player lose !";
           cScore++;
           updateScore();
           return;
@@ -75,11 +79,13 @@ function game () {
       if (playerSelection === "paper") {
         if (computerSelection === "scissors") {
           winner.textContent = "Computer Wins";
+          looser.textContent = "Player lose ! scissors beats paper";
           cScore++;
           updateScore();
           return;
         } else {
           winner.textContent = "Player Wins";
+          looser.textContent = "Computer lose !";
           pScore++;
           updateScore();
           return;
@@ -89,19 +95,29 @@ function game () {
       if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
           winner.textContent = "Computer Wins";
+          looser.textContent = "Player lose ! rock beats scissors";
           cScore++;
-          updateScore();
+          pdateScore();
           return;
         } else {
           winner.textContent = "Player Wins";
+          looser.textContent = "Computer lose !";
           pScore++;
           updateScore();
           return;
         }
       }
+    
+     /* if(pScore&&cSore)
+      {
+          return ;
+      }*/
+    
     };
     startGame()
     computerPlay()
     
+    
   };
+ 
   game();
