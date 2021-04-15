@@ -9,23 +9,17 @@ function game () {
       const match = document.querySelector(".match");
   
       playBtn.addEventListener("click", () => {
-        introScreen.classList.add("fadeOut");
+       introScreen.classList.add("fadeOut");
         match.classList.add("fadeIn");
       });
     };
     
-    function playMatch() {
+    function computerPlay() {
       const options = document.querySelectorAll(".options button");
       const playerHand = document.querySelector(".player-hand");
       const computerHand = document.querySelector(".computer-hand");
       const hands = document.querySelectorAll(".hands img");
-  
-      hands.forEach(hand => {
-        hand.addEventListener("animationend", function() {
-          this.style.animation = "";
-        });
-      });
-      
+    
       const computerOptions = ["rock", "paper", "scissors"];
   
       options.forEach(option => {
@@ -40,10 +34,8 @@ function game () {
             
             playerHand.src = `./images/${this.textContent}.png`;
             computerHand.src = `./images/${computerSelection}.png`;
-          }, 2000);
+          });
           
-          playerHand.style.animation = "shakePlayer 2s ease";
-          computerHand.style.animation = "shakeComputer 2s ease";
         });
       });
     };
@@ -58,6 +50,7 @@ function game () {
     function playRound(playerSelection, computerSelection) {
       
       const winner = document.querySelector(".winner");
+     
       
       if (playerSelection === computerSelection) {
         winner.textContent = "It is a tie";
@@ -67,6 +60,7 @@ function game () {
       if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
           winner.textContent = "Player Wins";
+          
           pScore++;
           updateScore();
           return;
@@ -106,11 +100,8 @@ function game () {
         }
       }
     };
-  
+    startGame()
+    computerPlay()
     
-    startGame();
-    playMatch();
   };
-  
-  
   game();
