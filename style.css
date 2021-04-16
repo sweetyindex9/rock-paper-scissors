@@ -6,7 +6,7 @@
   
   section {
     height: 100vh;
-    background-color: rgb(14, 25, 27);
+    background-color: rgb(44, 39, 46);
     font-family: sans-serif;
   }
   
@@ -91,6 +91,7 @@
     opacity: 1;
     pointer-events: all;
   }
+  
 /*#refresh-btn {
     font-size: large;
     height: 40px;

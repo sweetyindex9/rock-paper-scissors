@@ -9,11 +9,11 @@ function game () {
       const playBtn = document.querySelector(".intro button");
       const introScreen = document.querySelector(".intro");
       const match = document.querySelector(".match");
-     
+      
+  
       playBtn.addEventListener("click", () => {
        introScreen.classList.add("fadeOut");
         match.classList.add("fadeIn");
-        
       });
     };
     
@@ -134,12 +134,11 @@ function game () {
     };
     startGame()
     computerPlay()
-    
-    
+  
   };
- 
+  
   game();
-
+  
   function refreshPage() {
     location.reload();
 }
