@@ -1,16 +1,19 @@
+let totalAttempt=5;
+let cnt=1;
 function game () {
     let pScore = 0;
     let cScore = 0;
-    let cnt=0;
+    
     
     function startGame () {
       const playBtn = document.querySelector(".intro button");
       const introScreen = document.querySelector(".intro");
       const match = document.querySelector(".match");
-  
+     
       playBtn.addEventListener("click", () => {
        introScreen.classList.add("fadeOut");
         match.classList.add("fadeIn");
+        
       });
     };
     
@@ -47,29 +50,35 @@ function game () {
       computerScore.textContent = cScore;
     };
   
+  
+    
     function playRound(playerSelection, computerSelection) {
-     
+        if(cnt<totalAttempt){
+            cnt++;
       const winner = document.querySelector(".winner");
       const looser = document.querySelector(".looser");
      
       
       if (playerSelection === computerSelection) {
-        winner.textContent = "It is a tie";
-        looser.textContent = "It is a tie";
+       // winner.textContent = "It is a tie";
+      //  looser.textContent = "It is a tie";
+      cScore++;
+      pScore++;
+      updateScore();
         return;
       }
       
       if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
-          winner.textContent = "Player Wins";
-          looser.textContent = "Computer lose ! rock beats scissors";
+         // winner.textContent = "Player Wins";
+        //  looser.textContent = "Computer lose ! rock beats scissors";
           
          pScore++;
          updateScore();
           return;
         } else {
-          winner.textContent = "Computer Wins";
-          looser.textContent = "Player lose !";
+         // winner.textContent = "Computer Wins";
+         // looser.textContent = "Player lose !";
           cScore++;
           updateScore();
           return;
@@ -78,14 +87,14 @@ function game () {
       
       if (playerSelection === "paper") {
         if (computerSelection === "scissors") {
-          winner.textContent = "Computer Wins";
-          looser.textContent = "Player lose ! scissors beats paper";
+         // winner.textContent = "Computer Wins";
+         // looser.textContent = "Player lose ! scissors beats paper";
           cScore++;
           updateScore();
           return;
         } else {
-          winner.textContent = "Player Wins";
-          looser.textContent = "Computer lose !";
+         // winner.textContent = "Player Wins";
+         // looser.textContent = "Computer lose !";
           pScore++;
           updateScore();
           return;
@@ -94,25 +103,34 @@ function game () {
       
       if (playerSelection === "scissors") {
         if (computerSelection === "rock") {
-          winner.textContent = "Computer Wins";
-          looser.textContent = "Player lose ! rock beats scissors";
+         // winner.textContent = "Computer Wins";
+        //  looser.textContent = "Player lose ! rock beats scissors";
           cScore++;
-          pdateScore();
+          updateScore();
           return;
         } else {
-          winner.textContent = "Player Wins";
-          looser.textContent = "Computer lose !";
+          //winner.textContent = "Player Wins";
+         // looser.textContent = "Computer lose !";
           pScore++;
           updateScore();
           return;
         }
       }
-    
-     /* if(pScore&&cSore)
-      {
-          return ;
-      }*/
-    
+    }
+    else{
+        if(pScore<cScore){
+            document.getElementById("winner").innerHTML = "Computer Wins";
+            document.getElementById("looser").innerHTML = "Player lose ! rock beats scissors";
+        }
+        else if(pScore==cScore){
+            document.getElementById("winner").innerHTML = "It is a tie";
+            document.getElementById("looser").innerHTML = "It is a tie";
+        }
+       else {
+            document.getElementById("winner").innerHTML = "Player Wins";
+            document.getElementById("looser").innerHTML = "Computer lose ! rock beats scissors";
+        }
+    }
     };
     startGame()
     computerPlay()
@@ -121,3 +139,7 @@ function game () {
   };
  
   game();
+
+  function refreshPage() {
+    location.reload();
+}

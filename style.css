@@ -40,7 +40,7 @@
     font-size: 50px;
   }
   .intro button,
-  .match button {
+  .match button,.refresh-btn {
     width: 150px;
     height: 50px;
     background: none;
@@ -59,12 +59,12 @@
     transform: translate(-50%, -50%);
     transition: opacity 0.5s ease 0.5s;
   }
-  .winner {
+  #winner {
     color: rgb(224, 224, 224);
     text-align: center;
     font-size: 50px;
   }
-  .looser {
+  #looser {
     color: rgb(224, 224, 224);
     text-align: center;
     font-size: 30px;
@@ -91,6 +91,15 @@
     opacity: 1;
     pointer-events: all;
   }
+/*#refresh-btn {
+    font-size: large;
+    height: 40px;
+    align-items: center;
+    background: rgb(226, 72, 72);
+}
+.ref-btn{
+    align-items: center;
+}*/
 
   
   
